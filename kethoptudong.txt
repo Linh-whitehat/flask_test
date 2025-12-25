@@ -1,0 +1,323 @@
+from flask import Flask,render_template,request,redirect,url_for,flash
+from openpyxl import Workbook,load_workbook
+from openpyxl.styles import PatternFill,Alignment,Font,Border,Side
+import os
+import xlsxwriter
+
+FILENAME = "Ketquakethoptudong.xlsx"
+TITLE = "E3 Light gray 搭配 "
+#Các style dùng chung
+
+CENTER_ALIGN = Alignment(horizontal="center",vertical="center")
+THIN_BORDER = Border(
+    left=Side(border_style="thin",color="000000"),
+    right=Side(border_style="thin",color="000000"),
+    top=Side(border_style="thin",color="000000"),
+    bottom=Side(border_style="thin",color="000000"),
+)
+
+app = Flask(__name__)
+app.secret_key = "dev_secret" #doi khi deploy
+#spec chuan (mix, max ) cho tung kich thuoc
+MODEL_SPEC = {
+    "S9":{
+        "FB":{#Front Body
+            "上壁":(0.89, 1),
+            "下壁":(0.55, 0.65),
+            "左壁":(0.95, 1.05),
+            "右壁":(0.95, 1.05),
+            "横向内径":(6.2, 6.32),
+            "纵向内径":(6.03, 6.19),
+        },
+        "RB":{ #Rear body
+            "上壁":(0.93, 1.03),
+            "下壁":(0.57, 0.66),
+            "左壁":(0.95, 1.05),
+            "右壁":(0.95, 1.05),
+            "横向内径":(6.25, 6.32),
+            "纵向内径":(6.06, 6.14),
+        },
+    },
+    "S10":{
+        "FB":{#Front Body
+            "上壁":(0.89, 1.0),
+            "下壁":(0.55, 0.65),
+            "左壁":(0.95, 1.05),
+            "右壁":(0.95, 1.05),
+            "横向内径":(6.20, 6.32),
+            "纵向内径":(6.03, 6.19),
+        },
+        "RB":{ #Rear body
+            "上壁":(0.89, 1.0),
+            "下壁":(0.55, 0.65),
+            "左壁":(0.95, 1.05),
+            "右壁":(0.95, 1.05),
+            "横向内径":(6.20, 6.32),
+            "纵向内径":(6.03, 6.19),
+        },
+    },
+    "PA3":{
+        "FB":{#Front Body
+            "上壁":(0.40, 0.55),
+            "下壁":(0.43, 0.65),
+            "左壁":(0.5, 0.65),
+            "右壁":(0.5, 0.65),
+            #"横向内径":(4.55, 4.64),
+            "横向内径":(4.55, 4.67),
+            "纵向内径":(3.35, 3.45),
+            #"纵向内径":(3.36, 3.45),
+        },
+        "RB":{ #Rear body
+            "上壁":(0.45, 0.55),
+            "下壁":(0.44, 0.55),
+            "左壁":(0.60, 0.68),
+            "右壁":(0.60, 0.68),
+            "横向内径":(4.5, 4.58),
+            "纵向内径":(3.35, 3.425),
+            #"横向内径":(4.535, 4.58),
+            #"纵向内径":(3.38, 3.425),
+        },
+    },
+}
+def safe_float(s):
+    try:
+        return float(s)
+    except:
+        return None
+"""
+def check_in_spec(vals):
+    
+    kiểm tra xem từng giá trị có nằm trong spec k
+    vals: dict với 6 keys
+    
+    for k,(lo,hi) in MODEL_SPEC.items():
+        v = vals.get(k)
+        if v is None:
+            return False,f"{k} thieu du lieu"
+        if not (lo <= v <= hi):
+            return False, f"{k} ({v}) ngoai spec [{lo},{hi}]"
+    return True,""
+"""
+def check_in_spec(vals,model,side):
+    """
+    kiểm tra xem từng giá trị có nằm trong spec theo model + F/B hoặc R/B không
+    vals: dict với 6 keys
+    """
+    spec = MODEL_SPEC.get(model,{}).get(side)
+    if not spec:
+        return False, f"Chua co SPEC cho model={model},side={side}"
+    for k,(lo,hi) in spec.items(): #lo:giới hạn trên, hi: giới hạn dưới, v là giá trị nhập vào
+        v = vals.get(k)
+        if v is None:
+            return False,f"{side}-{k} thieu du lieu"
+        if not (lo <= v <= hi):
+            return False, f"{side}-{k} ({v}) ngoai spec [{lo},{hi}]"
+    return True,""
+def check_pairing(fb,rb,model):
+    print("FB:",fb,model)
+    print("RB",rb,model)
+    #Kiểm tra mỗi part có nằm trong spec không
+    ok_fb, msg_fb = check_in_spec(fb,model,"FB")
+    ok_rb,msg_rb = check_in_spec(rb,model,"RB")
+    if not ok_fb or not ok_rb:
+        return "NG",msg_fb or msg_rb
+    #tinh chenh lech
+    diffs = {
+        "上壁": fb["上壁"] - rb["上壁"],
+        "下壁": fb["下壁"] - rb["下壁"],
+        "左壁": fb["左壁"] - rb["左壁"],
+        "右壁": fb["右壁"] - rb["右壁"],
+        "横向内径": fb["横向内径"] - rb["横向内径"],
+        "纵向内径": fb["纵向内径"] - rb["纵向内径"],
+    }
+    #in ra bang so sanh
+    print("So sanh F/B - R/B:")
+    for k,d in diffs.items():
+        #sign = "Am" if d < 0 else "Duong"
+        print(f" {k}: {fb[k]:.3f} - {rb[k]:.3f} = {d:+.3f})")
+    A = abs(fb["上壁"] - rb["上壁"])
+    B = abs(fb["下壁"] - rb["下壁"])
+    C = abs(fb["左壁"] - rb["左壁"])
+    D = abs(fb["右壁"] - rb["右壁"])
+    X = fb["横向内径"] - rb["横向内径"]
+    Y = fb["纵向内径"] - rb["纵向内径"]
+    vals = [A,B,C,D]
+    if any (v > 0.1 for v in vals):
+        return "NG",""
+    if any(v > 0.08 for v in vals):
+        combos = [A+Y, B+Y, C+X, D+X]
+        if any (c > 0.1 for c in combos):
+            return "NG", ""
+        else:
+            return "管控",""
+    # all <= 0.08
+    combos = [A+Y, B+Y, C+X, D+X]
+    if all(c <= 0.08 for c in combos):
+        return "OK",""
+    if any(c > 0.1 for c in combos):
+        return "NG",""
+    if any(0.08 < c <= 0.1 for c in combos):
+        return "管控",""
+    return "管控",""
+
+def init_excel():
+    if os.path.exists(FILENAME):
+        try:
+            os.remove(FILENAME)
+            print(f"Da xoa file cu '{FILENAME}' de tao moi.")
+        except PermissionError:
+            print(f"Khong the ghi file '{FILENAME},co the dang mo. Hay dong file Excel va chay lai")
+            return
+
+def save_to_excel(fb_hole,rb_hole,result):
+    #ghi kêt quả
+    #kiểm tra xem file tồn tại chưa
+    if not os.path.exists(FILENAME):
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Matrix"
+        # gộp ô tiêu đề
+        ws.merge_cells("C1:I2")
+        title_cell = ws["C1"]
+        title_cell.value = TITLE
+        title_cell.alignment = Alignment(horizontal="center", vertical="center")
+        title_cell.font = Font(bold=True, size=14, color="000000")
+        title_cell.fill = PatternFill("solid", fgColor="87CEEB")
+
+        # gộp ô chéo F/B - R/B
+        thin = Side(border_style="thin", color="000000")
+        ws.merge_cells("A3:B4")
+        conner = ws["A3"]
+        conner.value = "F/B\nR/B"
+        conner.alignment = Alignment(horizontal="center",vertical="center",wrap_text=True)
+        conner.fill = PatternFill("solid",fgColor="87CEEB")
+        conner.border = Border(diagonal= thin,diagonalDown=True)
+        """
+        ws.column_dimensions["A"].width = 8
+        ws.column_dimensions["B"].width = 8
+        ws.row_dimensions[3].height =20
+        ws.row_dimensions[4].height = 20
+        for row in range(3,5):
+            for col in range(1,3):
+                ws.cell(row,col).fill = PatternFill("solid",fgColor="87CEEB")
+        #F/B ở góc trên bên phải
+        FB_cell = ws["B3"]
+        #corner_cell.value = "R/B\nF/B"
+        FB_cell.value = "F/B"
+        FB_cell.alignment = Alignment(horizontal="right",vertical="top")
+        FB_cell.font = Font(bold=True,size=12)
+
+        #R/B ở góc dưới bên trái
+        RB_cell = ws["A4"]
+        RB_cell.value = "R/B"
+        RB_cell.alignment = Alignment(horizontal="left",vertical="bottom")
+        """
+        wb.save(FILENAME)
+        print("Da khoi tao file voi bo cuc tieu de")
+    else:
+        wb = load_workbook(FILENAME)
+        ws = wb.active
+    thin = Side(border_style="thin",color="000000")
+    border = Border(left=thin,right=thin,top=thin,bottom=thin)
+    #xác định vị trí cột cho F/B
+    # tìm cột cho F/B (hàng 3-4)
+    #tìm xem F/B đã tồn tại chưa
+    fb_col = None
+    for c in range(3, ws.max_column + 1):
+        if ws.cell(3,c).value == fb_hole or ws.cell(4, c).value == fb_hole:
+            fb_col = c
+            break
+    #nếu chưa có, thêm cột mới ngay sau cột F/B cuối cùng
+    if fb_col is None:
+        last_fb_col = 2
+        for c in range(3,ws.max_column +1 ):
+            if ws.cell(3,c).value or ws.cell(4,c).value:
+                last_fb_col = c
+        fb_col = last_fb_col +1 if last_fb_col >=3 else 3 # đảm bảo F/B đầu tiên ở cột C
+        ws.cell(4, fb_col, fb_hole)
+    # gộp hàng 3,4 cho tiêu đề F/B
+    ws.merge_cells(start_row=3, start_column=fb_col, end_row=4, end_column=fb_col)
+    fb_cell = ws.cell(3,fb_col,fb_hole)
+    fb_cell.alignment = Alignment(horizontal="center",vertical="center")
+    #fb_cell.font = Font(bold=True)
+    fb_cell.fill = PatternFill("solid",fgColor="87CEEB")
+    fb_cell.border = border
+    # tìm hàng cho R/B (cột A-B)
+    rb_row = None
+    for r in range(5, ws.max_row + 1):
+        if ws.cell(r, 1).value == rb_hole:
+            rb_row = r
+            break
+    if rb_row is None:
+        rb_row = ws.max_row + 1
+        ws.cell(rb_row, 1, rb_hole)
+    ws.merge_cells(start_row=rb_row, start_column=1, end_row=rb_row, end_column=2)
+    rb_cell = ws.cell(rb_row,1)
+    rb_cell.alignment = Alignment(horizontal="center",vertical="center")
+    rb_cell.border = border
+    # #ghi ket qua vao o giao nhau
+    cell = ws.cell(rb_row, fb_col, result)
+    cell.alignment = Alignment(horizontal="center",vertical="center")
+    cell.border = border
+    # to mau theo ket qua
+    if result.startswith("OK"):
+        ws.cell(rb_row, fb_col).fill = PatternFill("solid", fgColor="00FF00")
+    elif "管控" in result:
+        ws.cell(rb_row, fb_col).fill = PatternFill("solid", fgColor="FFFF00")
+    else:
+        ws.cell(rb_row, fb_col).fill = PatternFill("solid", fgColor="FF0000")
+    wb.save(FILENAME)
+    print(f"da ghi {result} cho F/B={fb_hole},R/B={rb_hole}")
+
+@app.route("/",methods = ["GET","POST"])
+def index():
+    result = None
+    message = ""
+    #Ví dụ ds model có sẵn
+    models = ["S9","S10","PA3"]
+    if request.method == "POST":
+        model = request.form.get("model","").strip()
+        fb_hole = request.form.get("fb_hole","").strip()
+        fb_dc = request.form.get("fb_dc","").strip()
+        #doc 6 spec FB
+        fb = {
+            "上壁": safe_float(request.form.get("fb_up","").strip()),
+            "下壁": safe_float(request.form.get("fb_down", "").strip()),
+            "左壁": safe_float(request.form.get("fb_left", "").strip()),
+            "右壁": safe_float(request.form.get("fb_right", "").strip()),
+            "横向内径": safe_float(request.form.get("fb_x", "").strip()),
+            "纵向内径": safe_float(request.form.get("fb_y", "").strip()),
+        }
+        #rear body
+        rb_hole = request.form.get("rb_hole", "").strip()
+        rb_dc = request.form.get("rb_dc", "").strip()
+        # doc 6 spec FB
+        rb = {
+            "上壁": safe_float(request.form.get("rb_up", "").strip()),
+            "下壁": safe_float(request.form.get("rb_down", "").strip()),
+            "左壁": safe_float(request.form.get("rb_left", "").strip()),
+            "右壁": safe_float(request.form.get("rb_right", "").strip()),
+            "横向内径": safe_float(request.form.get("rb_x", "").strip()),
+            "纵向内径": safe_float(request.form.get("rb_y", "").strip()),
+        }
+        #kiem tra du lieu thieu/sai dinh dang
+        if not model:
+            flash("Vui long chon 选择机种(model).","warning")
+            return redirect(url_for("index"))
+        #kiem tra cac gia tri numeric nhap day du
+        if None in fb.values() or None in rb.values():
+            flash("Co o spec chua nhap dung so. Vui long kiem tra.","danger")
+            return redirect(url_for("index"))
+        #Goi ham kiem tra
+        result, message = check_pairing(fb,rb,model)
+        #luu vao excel
+        save_to_excel(fb_hole,rb_hole,result)
+    else:
+        model = ""
+        fb_hole = fb_dc = rb_hole = rb_dc = ""
+        fb = {k: "" for k in MODEL_SPEC.keys()}
+        rb = {k: "" for k in MODEL_SPEC.keys()}
+    return render_template("index.html",models=models, model=model,fb_hole=fb_hole,fb_dc=fb_dc,fb=fb,
+                           rb_hole=rb_hole,rb_dc=rb_dc,rb=rb,result=result,message=message)
+if __name__ == "__main__":
+    app.run(debug=True)
