@@ -1,4 +1,113 @@
+from flask import Flask, render_template, request, send_file
+from openpyxl import load_workbook
+import csv
+import io
+import re
+from collections import defaultdict
+import pandas as pd  # ✅ thêm pandas
 
+app = Flask(__name__)
+
+# 👉 Lấy ngày từ tên file
+def get_date_from_filename(filename):
+    match = re.search(r'\d{6}', filename)
+    if match:
+        d = match.group()
+        return f"20{d[0:2]}-{d[2:4]}-{d[4:6]}"
+    return filename
+
+
+# 👉 lưu kết quả tạm thời
+global_result = {}
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    global global_result
+    result = None
+
+    if request.method == 'POST':
+        files = request.files.getlist('files')
+        count_file = 0
+
+        if not files:
+            return render_template('index.html', result=None)
+
+        fail_by_date = defaultdict(int)
+
+        for idx, file in enumerate(files, start=1):
+            if not file or file.filename == '':
+                continue
+            if not (file.filename.endswith('.csv') or file.filename.endswith('.xlsx')):
+                continue
+
+            count_file += 1
+            print(f"👉 [{idx}] Đang xử lý:", file.filename)
+
+            file_date = get_date_from_filename(file.filename)
+            fail_count = 0
+
+            try:
+                if file.filename.endswith('.xlsx'):
+                    wb = load_workbook(file)
+                    ws = wb.active
+                    rows = ws.iter_rows(min_row=2, values_only=True)
+                else:
+                    content = file.read().decode("utf-8", errors='ignore')
+                    stream = io.StringIO(content)
+                    reader = csv.reader(stream)
+                    next(reader, None)
+                    rows = reader
+
+                for row in rows:
+                    if not row:
+                        continue
+                    if any('fail' in str(cell).lower() for cell in row):
+                        fail_by_date[file_date] += 1
+                        fail_count += 1
+
+                print("✔️ File OK:", file.filename, "Fail:", fail_count)
+            except Exception as e:
+                print("❌ Lỗi file:", file.filename, e)
+
+        result = dict(fail_by_date)
+        global_result = result  # lưu tạm để xuất Excel
+        print("🔥 TỔNG FILE NHẬN:", count_file)
+
+    return render_template('index.html', result=result)
+
+
+# 👉 route xuất Excel
+@app.route('/export')
+def export_excel():
+    if not global_result:
+        return "Không có dữ liệu để xuất"
+
+    # chuyển dict thành DataFrame
+    df = pd.DataFrame(list(global_result.items()), columns=['Ngày', 'Fail'])
+    df.index += 1  # STT bắt đầu từ 1
+    df.index.name = 'STT'
+
+    # xuất ra file Excel tạm
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        df.to_excel(writer, sheet_name='Fail_Counts')
+    output.seek(0)
+
+    return send_file(output,
+                     download_name="fail_by_date.xlsx",
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+{% if result is not none and result|length > 0 %}
+    <a href="{{ url_for('export_excel') }}">
+        <button>Xuất Excel</button>
+    </a>
+{% endif %} 
+-------------
 
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
