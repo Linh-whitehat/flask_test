@@ -1,4 +1,72 @@
+from flask import Flask, render_template, request
+from openpyxl import load_workbook
+import csv
+import io
+import re
 
+app = Flask(__name__)
+
+# 👉 Hàm lấy ngày từ tên file
+def get_date_from_filename(filename):
+    match = re.search(r'\d{6}', filename)
+    if match:
+        d = match.group()
+        return f"20{d[0:2]}-{d[2:4]}-{d[4:6]}"
+    return filename  # fallback nếu không match
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    result = None
+
+    if request.method == 'POST':
+        file = request.files.get('file')
+
+        if not file or file.filename == '':
+            return render_template('index.html', result=None)
+
+        # 👉 lấy ngày từ tên file
+        file_date = get_date_from_filename(file.filename)
+
+        fail_count = 0
+
+        try:
+            # 👉 Excel
+            if file.filename.endswith('.xlsx'):
+                wb = load_workbook(file)
+                ws = wb.active
+                rows = ws.iter_rows(min_row=2, values_only=True)
+
+            # 👉 CSV
+            else:
+                content = file.read().decode("utf-8", errors='ignore')
+                stream = io.StringIO(content)
+                reader = csv.reader(stream)
+                next(reader, None)
+                rows = reader
+
+            # 👉 Đếm FAIL
+            for row in rows:
+                if not row:
+                    continue
+
+                if any('fail' in str(cell).lower() for cell in row):
+                    fail_count += 1
+
+            # 👉 Kết quả dạng dict
+            result = {file_date: fail_count}
+
+            print("RESULT:", result)
+
+        except Exception as e:
+            print("ERROR:", e)
+            result = {"Lỗi": str(e)}
+
+    return render_template('index.html', result=result)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 UnboundLocalError: cannot access local variable 'ws' where it is not associated with a value
 
 Traceback (most recent call last)
