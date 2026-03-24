@@ -1,3 +1,81 @@
+<input type="file" name="files" webkitdirectory directory multiple>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="files" webkitdirectory directory multiple>
+    <br><br>
+    <button type="submit">Upload Folder</button>
+</form>
+from flask import Flask, render_template, request
+from openpyxl import load_workbook
+import csv
+import io
+import re
+from collections import defaultdict
+
+app = Flask(__name__)
+
+# 👉 Lấy ngày từ tên file
+def get_date_from_filename(filename):
+    match = re.search(r'\d{6}', filename)
+    if match:
+        d = match.group()
+        return f"20{d[0:2]}-{d[2:4]}-{d[4:6]}"
+    return filename
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    result = None
+
+    if request.method == 'POST':
+        files = request.files.getlist('files')
+
+        if not files:
+            return render_template('index.html', result=None)
+
+        fail_by_date = defaultdict(int)
+
+        for file in files:
+            if not file or file.filename == '':
+                continue
+
+            file_date = get_date_from_filename(file.filename)
+
+            try:
+                # 👉 Excel
+                if file.filename.endswith('.xlsx'):
+                    wb = load_workbook(file)
+                    ws = wb.active
+                    rows = ws.iter_rows(min_row=2, values_only=True)
+
+                # 👉 CSV
+                else:
+                    content = file.read().decode("utf-8", errors='ignore')
+                    stream = io.StringIO(content)
+                    reader = csv.reader(stream)
+                    next(reader, None)
+                    rows = reader
+
+                # 👉 Đếm FAIL trong từng file
+                for row in rows:
+                    if not row:
+                        continue
+
+                    if any('fail' in str(cell).lower() for cell in row):
+                        fail_by_date[file_date] += 1
+
+            except Exception as e:
+                print("ERROR:", file.filename, e)
+
+        result = dict(fail_by_date)
+
+    return render_template('index.html', result=result)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+😶
 {% if fail_rows and fail_rows|length > 0 %}
 <h3>Chi tiết lỗi</h3>
 <table>
