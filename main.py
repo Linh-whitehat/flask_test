@@ -1,3 +1,93 @@
+{% if fail_rows and fail_rows|length > 0 %}
+<h3>Chi tiết lỗi</h3>
+<table>
+    <tr>
+        <th>Dòng</th>
+        <th>Nội dung</th>
+    </tr>
+    {% for row in fail_rows %}
+    <tr>
+        <td>{{ row.line }}</td>
+        <td>{{ row.data }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+
+from flask import Flask, render_template, request
+from openpyxl import load_workbook
+import csv
+import io
+import re
+
+app = Flask(__name__)
+
+# 👉 Lấy ngày từ tên file
+def get_date_from_filename(filename):
+    match = re.search(r'\d{6}', filename)
+    if match:
+        d = match.group()
+        return f"20{d[0:2]}-{d[2:4]}-{d[4:6]}"
+    return filename
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    result = None
+    fail_rows = []   # 👉 lưu dòng lỗi
+
+    if request.method == 'POST':
+        file = request.files.get('file')
+
+        if not file or file.filename == '':
+            return render_template('index.html', result=None, fail_rows=[])
+
+        file_date = get_date_from_filename(file.filename)
+        fail_count = 0
+
+        try:
+            # 👉 Excel
+            if file.filename.endswith('.xlsx'):
+                wb = load_workbook(file)
+                ws = wb.active
+                rows = ws.iter_rows(min_row=2, values_only=True)
+
+            # 👉 CSV
+            else:
+                content = file.read().decode("utf-8", errors='ignore')
+                stream = io.StringIO(content)
+                reader = csv.reader(stream)
+                next(reader, None)
+                rows = reader
+
+            # 👉 Đếm + lưu dòng lỗi
+            for idx, row in enumerate(rows, start=2):
+                if not row:
+                    continue
+
+                if any('fail' in str(cell).lower() for cell in row):
+                    fail_count += 1
+
+                    # 👉 lưu dòng lỗi (join lại cho dễ đọc)
+                    fail_rows.append({
+                        "line": idx,
+                        "data": " | ".join(str(x) for x in row)
+                    })
+
+            result = {file_date: fail_count}
+
+        except Exception as e:
+            result = {"Lỗi": str(e)}
+
+    return render_template('index.html', result=result, fail_rows=fail_rows)
+
+
+if __name__ == '__main__':
+    app.run(debug=True) 
+
+
+😁
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
 import csv
