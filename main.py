@@ -1,4 +1,8 @@
 
+UnboundLocalError: cannot access local variable 'ws' where it is not associated with a value
+
+Traceback (most recent call last)
+
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
 from collections import defaultdict
