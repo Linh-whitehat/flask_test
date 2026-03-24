@@ -1,343 +1,173 @@
-👉 [1] Đang xử lý: a340/AJ250804.csv
-✔️ File OK: a340/AJ250804.csv Fail: 0
-👉 [2] Đang xử lý: a340/AJ250806.csv
-✔️ File OK: a340/AJ250806.csv Fail: 0
-👉 [3] Đang xử lý: a340/AJ250808.csv
-✔️ File OK: a340/AJ250808.csv Fail: 0
-👉 [4] Đang xử lý: a340/AJ250816.csv
-✔️ File OK: a340/AJ250816.csv Fail: 0
-👉 [5] Đang xử lý: a340/AJ250818.csv
-✔️ File OK: a340/AJ250818.csv Fail: 0
-👉 [6] Đang xử lý: a340/AJ250819.csv
-✔️ File OK: a340/AJ250819.csv Fail: 0
-👉 [7] Đang xử lý: a340/AJ250820.csv
-✔️ File OK: a340/AJ250820.csv Fail: 0
-👉 [8] Đang xử lý: a340/AJ250909.csv
-✔️ File OK: a340/AJ250909.csv Fail: 0
-👉 [9] Đang xử lý: a340/AJ250915.csv
-✔️ File OK: a340/AJ250915.csv Fail: 0
-👉 [10] Đang xử lý: a340/AJ250916.csv
-✔️ File OK: a340/AJ250916.csv Fail: 0
-👉 [11] Đang xử lý: a340/AJ250917.csv
-✔️ File OK: a340/AJ250917.csv Fail: 0
-👉 [12] Đang xử lý: a340/AJ250918.csv
-✔️ File OK: a340/AJ250918.csv Fail: 0
-👉 [13] Đang xử lý: a340/AJ250919.csv
-✔️ File OK: a340/AJ250919.csv Fail: 0
-👉 [14] Đang xử lý: a340/AJ250920.csv
-✔️ File OK: a340/AJ250920.csv Fail: 0
-👉 [15] Đang xử lý: a340/AJ250922.csv
-✔️ File OK: a340/AJ250922.csv Fail: 0
-👉 [16] Đang xử lý: a340/AJ251117.csv
-✔️ File OK: a340/AJ251117.csv Fail: 0
-👉 [17] Đang xử lý: a340/AJ251118.csv
-✔️ File OK: a340/AJ251118.csv Fail: 0
-👉 [18] Đang xử lý: a340/AJ251129.csv
-✔️ File OK: a340/AJ251129.csv Fail: 0
-👉 [19] Đang xử lý: a340/AJ251130.csv
-✔️ File OK: a340/AJ251130.csv Fail: 0
-👉 [20] Đang xử lý: a340/AJ251201.csv
-✔️ File OK: a340/AJ251201.csv Fail: 0
-👉 [21] Đang xử lý: a340/AJ251202.csv
-✔️ File OK: a340/AJ251202.csv Fail: 0
-👉 [22] Đang xử lý: a340/AJ251203.csv
-✔️ File OK: a340/AJ251203.csv Fail: 0
-👉 [23] Đang xử lý: a340/AJ251204.csv
-✔️ File OK: a340/AJ251204.csv Fail: 0
-👉 [24] Đang xử lý: a340/AJ251205.csv
-✔️ File OK: a340/AJ251205.csv Fail: 0
-👉 [25] Đang xử lý: a340/AJ251209.csv
-✔️ File OK: a340/AJ251209.csv Fail: 0
-👉 [26] Đang xử lý: a340/AJ251210.csv
-✔️ File OK: a340/AJ251210.csv Fail: 0
-👉 [27] Đang xử lý: a340/AJ251211.csv
-✔️ File OK: a340/AJ251211.csv Fail: 0
-👉 [28] Đang xử lý: a340/AJ251212.csv
-✔️ File OK: a340/AJ251212.csv Fail: 0
-👉 [29] Đang xử lý: a340/AJ251214.csv
-✔️ File OK: a340/AJ251214.csv Fail: 0
-👉 [30] Đang xử lý: a340/AJ251215.csv
-✔️ File OK: a340/AJ251215.csv Fail: 0
-👉 [31] Đang xử lý: a340/AJ251216.csv
-✔️ File OK: a340/AJ251216.csv Fail: 0
-👉 [32] Đang xử lý: a340/AJ251217.csv
-✔️ File OK: a340/AJ251217.csv Fail: 0
-👉 [33] Đang xử lý: a340/AJ251220.csv
-✔️ File OK: a340/AJ251220.csv Fail: 0
-👉 [34] Đang xử lý: a340/AJ251221.csv
-✔️ File OK: a340/AJ251221.csv Fail: 0
-👉 [35] Đang xử lý: a340/AJ251222.csv
-✔️ File OK: a340/AJ251222.csv Fail: 0
-👉 [36] Đang xử lý: a340/AJ251223.csv
-✔️ File OK: a340/AJ251223.csv Fail: 0
-👉 [37] Đang xử lý: a340/AJ251225.csv
-✔️ File OK: a340/AJ251225.csv Fail: 0
-👉 [38] Đang xử lý: a340/AJ251226.csv
-✔️ File OK: a340/AJ251226.csv Fail: 0
-👉 [39] Đang xử lý: a340/AJ251227.csv
-✔️ File OK: a340/AJ251227.csv Fail: 0
-👉 [40] Đang xử lý: a340/AJ251229.csv
-✔️ File OK: a340/AJ251229.csv Fail: 0
-👉 [41] Đang xử lý: a340/AJ260103.csv
-✔️ File OK: a340/AJ260103.csv Fail: 0
-👉 [42] Đang xử lý: a340/AJ260104.csv
-✔️ File OK: a340/AJ260104.csv Fail: 0
-👉 [43] Đang xử lý: a340/AJ260107.csv
-✔️ File OK: a340/AJ260107.csv Fail: 0
-👉 [44] Đang xử lý: a340/AJ260108.csv
-✔️ File OK: a340/AJ260108.csv Fail: 0
-👉 [45] Đang xử lý: a340/AJ260109.csv
-✔️ File OK: a340/AJ260109.csv Fail: 0
-👉 [46] Đang xử lý: a340/AJ260110.csv
-✔️ File OK: a340/AJ260110.csv Fail: 0
-👉 [47] Đang xử lý: a340/AJ260111.csv
-✔️ File OK: a340/AJ260111.csv Fail: 0
-👉 [48] Đang xử lý: a340/AJ260112.csv
-✔️ File OK: a340/AJ260112.csv Fail: 0
-👉 [49] Đang xử lý: a340/AJ260113.csv
-✔️ File OK: a340/AJ260113.csv Fail: 0
-👉 [50] Đang xử lý: a340/AJ260114.csv
-✔️ File OK: a340/AJ260114.csv Fail: 0
-👉 [51] Đang xử lý: a340/AJ260119.csv
-✔️ File OK: a340/AJ260119.csv Fail: 0
-👉 [52] Đang xử lý: a340/AJ260120.csv
-✔️ File OK: a340/AJ260120.csv Fail: 0
-👉 [53] Đang xử lý: a340/AJ260121.csv
-✔️ File OK: a340/AJ260121.csv Fail: 0
-👉 [54] Đang xử lý: a340/AJ260123.csv
-✔️ File OK: a340/AJ260123.csv Fail: 0
-👉 [55] Đang xử lý: a340/AJ260124.csv
-✔️ File OK: a340/AJ260124.csv Fail: 0
-👉 [56] Đang xử lý: a340/AJ260129.csv
-✔️ File OK: a340/AJ260129.csv Fail: 0
-👉 [57] Đang xử lý: a340/AJ260130.csv
-✔️ File OK: a340/AJ260130.csv Fail: 0
-👉 [58] Đang xử lý: a340/AJ260204.csv
-✔️ File OK: a340/AJ260204.csv Fail: 0
-👉 [59] Đang xử lý: a340/AJ260205.csv
-✔️ File OK: a340/AJ260205.csv Fail: 0
-👉 [60] Đang xử lý: a340/AJ260206.csv
-✔️ File OK: a340/AJ260206.csv Fail: 0
-👉 [61] Đang xử lý: a340/AJ260207.csv
-✔️ File OK: a340/AJ260207.csv Fail: 0
-👉 [62] Đang xử lý: a340/AJ260208.csv
-✔️ File OK: a340/AJ260208.csv Fail: 0
-👉 [63] Đang xử lý: a340/AJ260209.csv
-✔️ File OK: a340/AJ260209.csv Fail: 0
-👉 [64] Đang xử lý: a340/AJ260210.csv
-✔️ File OK: a340/AJ260210.csv Fail: 0
-👉 [65] Đang xử lý: a340/AJ260212.csv
-✔️ File OK: a340/AJ260212.csv Fail: 0
-👉 [66] Đang xử lý: a340/AJ260213.csv
-✔️ File OK: a340/AJ260213.csv Fail: 0
-👉 [67] Đang xử lý: a340/AJ260214.csv
-✔️ File OK: a340/AJ260214.csv Fail: 0
-👉 [68] Đang xử lý: a340/AJ260223.csv
-✔️ File OK: a340/AJ260223.csv Fail: 0
-👉 [69] Đang xử lý: a340/AJ260224.csv
-✔️ File OK: a340/AJ260224.csv Fail: 0
-👉 [70] Đang xử lý: a340/AJ260301.csv
-✔️ File OK: a340/AJ260301.csv Fail: 0
-👉 [71] Đang xử lý: a340/AJ260302.csv
-✔️ File OK: a340/AJ260302.csv Fail: 0
-👉 [72] Đang xử lý: a340/AJ260303.csv
-✔️ File OK: a340/AJ260303.csv Fail: 0
-👉 [73] Đang xử lý: a340/AJ260304.csv
-✔️ File OK: a340/AJ260304.csv Fail: 0
-👉 [74] Đang xử lý: a340/AJ260305.csv
-✔️ File OK: a340/AJ260305.csv Fail: 0
-👉 [75] Đang xử lý: a340/AJ260306.csv
-✔️ File OK: a340/AJ260306.csv Fail: 0
-👉 [76] Đang xử lý: a340/AJ260307.csv
-✔️ File OK: a340/AJ260307.csv Fail: 0
-👉 [77] Đang xử lý: a340/AJ260310.csv
-✔️ File OK: a340/AJ260310.csv Fail: 0
-👉 [78] Đang xử lý: a340/AJ260311.csv
-✔️ File OK: a340/AJ260311.csv Fail: 0
-👉 [79] Đang xử lý: a340/AJ260312.csv
-✔️ File OK: a340/AJ260312.csv Fail: 0
-👉 [80] Đang xử lý: a340/AJ260313.csv
-✔️ File OK: a340/AJ260313.csv Fail: 0
-👉 [81] Đang xử lý: a340/AJ260317.csv
-✔️ File OK: a340/AJ260317.csv Fail: 0
-👉 [82] Đang xử lý: a340/AJ260318.csv
-✔️ File OK: a340/AJ260318.csv Fail: 0
-👉 [83] Đang xử lý: a340/AJ260319.csv
-✔️ File OK: a340/AJ260319.csv Fail: 0
-👉 [84] Đang xử lý: a340/BC250804.csv
-✔️ File OK: a340/BC250804.csv Fail: 8
-👉 [85] Đang xử lý: a340/BC250806.csv
-✔️ File OK: a340/BC250806.csv Fail: 34
-👉 [86] Đang xử lý: a340/BC250808.csv
-✔️ File OK: a340/BC250808.csv Fail: 0
-👉 [87] Đang xử lý: a340/BC250816.csv
-✔️ File OK: a340/BC250816.csv Fail: 2
-👉 [88] Đang xử lý: a340/BC250818.csv
-✔️ File OK: a340/BC250818.csv Fail: 1
-👉 [89] Đang xử lý: a340/BC250819.csv
-✔️ File OK: a340/BC250819.csv Fail: 1
-👉 [90] Đang xử lý: a340/BC250820.csv
-✔️ File OK: a340/BC250820.csv Fail: 1
-👉 [91] Đang xử lý: a340/BC250830.csv
-✔️ File OK: a340/BC250830.csv Fail: 0
-👉 [92] Đang xử lý: a340/BC250909.csv
-✔️ File OK: a340/BC250909.csv Fail: 2
-👉 [93] Đang xử lý: a340/BC250915.csv
-✔️ File OK: a340/BC250915.csv Fail: 5
-👉 [94] Đang xử lý: a340/BC250916.csv
-✔️ File OK: a340/BC250916.csv Fail: 2
-👉 [95] Đang xử lý: a340/BC250917.csv
-✔️ File OK: a340/BC250917.csv Fail: 1
-👉 [96] Đang xử lý: a340/BC250918.csv
-✔️ File OK: a340/BC250918.csv Fail: 7
-👉 [97] Đang xử lý: a340/BC250919.csv
-✔️ File OK: a340/BC250919.csv Fail: 4
-👉 [98] Đang xử lý: a340/BC250920.csv
-✔️ File OK: a340/BC250920.csv Fail: 3
-👉 [99] Đang xử lý: a340/BC250922.csv
-✔️ File OK: a340/BC250922.csv Fail: 0
-👉 [100] Đang xử lý: a340/BC251117.csv
-✔️ File OK: a340/BC251117.csv Fail: 4
-👉 [101] Đang xử lý: a340/BC251118.csv
-✔️ File OK: a340/BC251118.csv Fail: 1
-👉 [102] Đang xử lý: a340/BC251129.csv
-✔️ File OK: a340/BC251129.csv Fail: 14
-👉 [103] Đang xử lý: a340/BC251130.csv
-✔️ File OK: a340/BC251130.csv Fail: 9
-👉 [104] Đang xử lý: a340/BC251201.csv
-✔️ File OK: a340/BC251201.csv Fail: 30
-👉 [105] Đang xử lý: a340/BC251202.csv
-✔️ File OK: a340/BC251202.csv Fail: 38
-👉 [106] Đang xử lý: a340/BC251203.csv
-✔️ File OK: a340/BC251203.csv Fail: 35
-👉 [107] Đang xử lý: a340/BC251204.csv
-✔️ File OK: a340/BC251204.csv Fail: 39
-👉 [108] Đang xử lý: a340/BC251205.csv
-✔️ File OK: a340/BC251205.csv Fail: 1
-👉 [109] Đang xử lý: a340/BC251209.csv
-✔️ File OK: a340/BC251209.csv Fail: 57
-👉 [110] Đang xử lý: a340/BC251210.csv
-✔️ File OK: a340/BC251210.csv Fail: 53
-👉 [111] Đang xử lý: a340/BC251211.csv
-✔️ File OK: a340/BC251211.csv Fail: 9
-👉 [112] Đang xử lý: a340/BC251212.csv
-✔️ File OK: a340/BC251212.csv Fail: 6
-👉 [113] Đang xử lý: a340/BC251214.csv
-✔️ File OK: a340/BC251214.csv Fail: 14
-👉 [114] Đang xử lý: a340/BC251215.csv
-✔️ File OK: a340/BC251215.csv Fail: 34
-👉 [115] Đang xử lý: a340/BC251216.csv
-✔️ File OK: a340/BC251216.csv Fail: 43
-👉 [116] Đang xử lý: a340/BC251217.csv
-✔️ File OK: a340/BC251217.csv Fail: 27
-👉 [117] Đang xử lý: a340/BC251220.csv
-✔️ File OK: a340/BC251220.csv Fail: 10
-👉 [118] Đang xử lý: a340/BC251221.csv
-✔️ File OK: a340/BC251221.csv Fail: 5
-👉 [119] Đang xử lý: a340/BC251222.csv
-✔️ File OK: a340/BC251222.csv Fail: 13
-👉 [120] Đang xử lý: a340/BC251223.csv
-✔️ File OK: a340/BC251223.csv Fail: 2
-👉 [121] Đang xử lý: a340/BC251225.csv
-✔️ File OK: a340/BC251225.csv Fail: 59
-👉 [122] Đang xử lý: a340/BC251226.csv
-✔️ File OK: a340/BC251226.csv Fail: 37
-👉 [123] Đang xử lý: a340/BC251227.csv
-✔️ File OK: a340/BC251227.csv Fail: 17
-👉 [124] Đang xử lý: a340/BC251229.csv
-✔️ File OK: a340/BC251229.csv Fail: 10
-👉 [125] Đang xử lý: a340/BC260103.csv
-✔️ File OK: a340/BC260103.csv Fail: 35
-👉 [126] Đang xử lý: a340/BC260104.csv
-✔️ File OK: a340/BC260104.csv Fail: 16
-👉 [127] Đang xử lý: a340/BC260107.csv
-✔️ File OK: a340/BC260107.csv Fail: 55
-👉 [128] Đang xử lý: a340/BC260108.csv
-✔️ File OK: a340/BC260108.csv Fail: 43
-👉 [129] Đang xử lý: a340/BC260109.csv
-✔️ File OK: a340/BC260109.csv Fail: 5
-👉 [130] Đang xử lý: a340/BC260110.csv
-✔️ File OK: a340/BC260110.csv Fail: 40
-👉 [131] Đang xử lý: a340/BC260111.csv
-✔️ File OK: a340/BC260111.csv Fail: 22
-👉 [132] Đang xử lý: a340/BC260112.csv
-✔️ File OK: a340/BC260112.csv Fail: 9
-👉 [133] Đang xử lý: a340/BC260113.csv
-✔️ File OK: a340/BC260113.csv Fail: 23
-👉 [134] Đang xử lý: a340/BC260114.csv
-✔️ File OK: a340/BC260114.csv Fail: 40
-👉 [135] Đang xử lý: a340/BC260119.csv
-✔️ File OK: a340/BC260119.csv Fail: 24
-👉 [136] Đang xử lý: a340/BC260120.csv
-✔️ File OK: a340/BC260120.csv Fail: 51
-👉 [137] Đang xử lý: a340/BC260121.csv
-✔️ File OK: a340/BC260121.csv Fail: 2
-👉 [138] Đang xử lý: a340/BC260123.csv
-✔️ File OK: a340/BC260123.csv Fail: 8
-👉 [139] Đang xử lý: a340/BC260124.csv
-✔️ File OK: a340/BC260124.csv Fail: 34
-👉 [140] Đang xử lý: a340/BC260129.csv
-✔️ File OK: a340/BC260129.csv Fail: 21
-👉 [141] Đang xử lý: a340/BC260130.csv
-✔️ File OK: a340/BC260130.csv Fail: 24
-👉 [142] Đang xử lý: a340/BC260204.csv
-✔️ File OK: a340/BC260204.csv Fail: 47
-👉 [143] Đang xử lý: a340/BC260205.csv
-✔️ File OK: a340/BC260205.csv Fail: 23
-👉 [144] Đang xử lý: a340/BC260206.csv
-✔️ File OK: a340/BC260206.csv Fail: 57
-👉 [145] Đang xử lý: a340/BC260207.csv
-✔️ File OK: a340/BC260207.csv Fail: 26
-👉 [146] Đang xử lý: a340/BC260208.csv
-✔️ File OK: a340/BC260208.csv Fail: 9
-👉 [147] Đang xử lý: a340/BC260209.csv
-✔️ File OK: a340/BC260209.csv Fail: 34
-👉 [148] Đang xử lý: a340/BC260210.csv
-✔️ File OK: a340/BC260210.csv Fail: 60
-👉 [149] Đang xử lý: a340/BC260212.csv
-✔️ File OK: a340/BC260212.csv Fail: 1
-👉 [150] Đang xử lý: a340/BC260213.csv
-✔️ File OK: a340/BC260213.csv Fail: 30
-👉 [151] Đang xử lý: a340/BC260214.csv
-✔️ File OK: a340/BC260214.csv Fail: 2
-👉 [152] Đang xử lý: a340/BC260223.csv
-✔️ File OK: a340/BC260223.csv Fail: 12
-👉 [153] Đang xử lý: a340/BC260224.csv
-✔️ File OK: a340/BC260224.csv Fail: 17
-👉 [154] Đang xử lý: a340/BC260301.csv
-✔️ File OK: a340/BC260301.csv Fail: 18
-👉 [155] Đang xử lý: a340/BC260302.csv
-✔️ File OK: a340/BC260302.csv Fail: 23
-👉 [156] Đang xử lý: a340/BC260303.csv
-✔️ File OK: a340/BC260303.csv Fail: 60
-👉 [157] Đang xử lý: a340/BC260304.csv
-✔️ File OK: a340/BC260304.csv Fail: 71
-👉 [158] Đang xử lý: a340/BC260305.csv
-✔️ File OK: a340/BC260305.csv Fail: 44
-👉 [159] Đang xử lý: a340/BC260306.csv
-✔️ File OK: a340/BC260306.csv Fail: 41
-👉 [160] Đang xử lý: a340/BC260307.csv
-✔️ File OK: a340/BC260307.csv Fail: 7
-👉 [161] Đang xử lý: a340/BC260310.csv
-✔️ File OK: a340/BC260310.csv Fail: 29
-👉 [162] Đang xử lý: a340/BC260311.csv
-✔️ File OK: a340/BC260311.csv Fail: 18
-👉 [163] Đang xử lý: a340/BC260312.csv
-✔️ File OK: a340/BC260312.csv Fail: 30
-👉 [164] Đang xử lý: a340/BC260313.csv
-✔️ File OK: a340/BC260313.csv Fail: 29
-👉 [165] Đang xử lý: a340/BC260317.csv
-✔️ File OK: a340/BC260317.csv Fail: 6
-👉 [166] Đang xử lý: a340/BC260318.csv
-✔️ File OK: a340/BC260318.csv Fail: 43
-👉 [167] Đang xử lý: a340/BC260319.csv
-✔️ File OK: a340/BC260319.csv Fail: 9
-👉 [169] Đang xử lý: a340/CP251202.csv
-✔️ File OK: a340/CP251202.csv Fail: 0
-👉 [172] Đang xử lý: a340/PhIni/#2_TPCS_H_PS_0711_PhIni.csv
-✔️ File OK: a340/PhIni/#2_TPCS_H_PS_0711_PhIni.csv Fail: 0
-🔥 TỔNG FILE NHẬN: 169
 
+
+from flask import Flask, render_template, request
+from openpyxl import load_workbook
+import csv
+import io
+import re
+from collections import defaultdict
+
+app = Flask(__name__)
+
+# 👉 Lấy ngày từ tên file
+def get_date_from_filename(filename):
+    match = re.search(r'\d{6}', filename)
+    if match:
+        d = match.group()
+        return f"20{d[0:2]}-{d[2:4]}-{d[4:6]}"
+    return filename
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    result = None
+
+    if request.method == 'POST':
+        files = request.files.getlist('files')
+
+        count_file = 0  # 👉 đếm số file nhận được
+
+        if not files:
+            return render_template('index.html', result=None)
+
+        fail_by_date = defaultdict(int)
+
+        for idx, file in enumerate(files,start=1):
+            if not file or file.filename == '':
+                continue
+            # lọc file bỏ qua .exe, .dat
+            if not (file.filename.endswith('.csv') or file.filename.endswith('.xlsx')):
+                continue
+
+            count_file += 1
+            #print("📄 File nhận:", file.filename)
+
+            #  kiểm tra đang xử lý
+            print(f"👉 [{idx}] Đang xử lý:", file.filename)
+
+            file_date = get_date_from_filename(file.filename)
+            fail_count = 0
+
+            try:
+                #  Excel
+                if file.filename.endswith('.xlsx'):
+                    wb = load_workbook(file)
+                    ws = wb.active
+                    rows = ws.iter_rows(min_row=2, values_only=True)
+
+                #  CSV
+                else:
+                    content = file.read().decode("utf-8", errors='ignore')
+                    stream = io.StringIO(content)
+                    reader = csv.reader(stream)
+                    next(reader, None)
+                    rows = reader
+
+                # 👉 Đếm FAIL trong từng file
+                for row in rows:
+                    if not row:
+                        continue
+
+                    if any('fail' in str(cell).lower() for cell in row):
+                        fail_by_date[file_date] += 1
+                        fail_count += 1
+
+                print("✔️ File OK:", file.filename, "Fail:", fail_count)
+
+            except Exception as e:
+                print("ERROR:", file.filename, e)
+                print("❌ Lỗi file:", file.filename, e)
+
+        result = dict(fail_by_date)
+        print("🔥 TỔNG FILE NHẬN:", count_file)
+
+    return render_template('index.html', result=result)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Folder</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        th {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Upload Folder</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="files" webkitdirectory directory multiple>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if result is not none %}
+    <h3>Kết quả</h3>
+
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Ngày</th>
+            <th>Fail</th>
+        </tr>
+        {% for date, count in result.items() %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ date }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if result|length == 0 %}
+    <p>Không có dữ liệu</p>
+    {% endif %}
+
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+
+-----------------------------------------------------
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
 import csv
