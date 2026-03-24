@@ -1,3 +1,48 @@
+files = request.files.getlist('files')
+
+count_file = 0  # 👉 đếm số file nhận được
+
+for file in files:
+    if not file or file.filename == '':
+        continue
+
+    count_file += 1
+    print("📄 File nhận:", file.filename)
+
+    # 👉 kiểm tra đang xử lý
+    print("👉 Đang đọc:", file.filename)
+
+    file_date = get_date_from_filename(file.filename)
+    fail_count = 0
+
+    try:
+        if file.filename.endswith('.xlsx'):
+            wb = load_workbook(file)
+            ws = wb.active
+            rows = ws.iter_rows(min_row=2, values_only=True)
+        else:
+            content = file.read().decode("utf-8", errors='ignore')
+            stream = io.StringIO(content)
+            reader = csv.reader(stream)
+            next(reader, None)
+            rows = reader
+
+        for row in rows:
+            if not row:
+                continue
+
+            if any('fail' in str(cell).lower() for cell in row):
+                fail_count += 1
+
+        print("✔️ File OK:", file.filename, "Fail:", fail_count)
+
+    except Exception as e:
+        print("❌ Lỗi file:", file.filename, e)
+
+print("🔥 TỔNG FILE NHẬN:", count_file)
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
