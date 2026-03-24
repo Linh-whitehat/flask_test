@@ -1,3 +1,144 @@
+<div class="box">
+    <h2>Upload Folder</h2>
+
+    <!-- Form upload -->
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="files" class="custom-file-upload">
+            📁 Chọn folder
+        </label>
+        <input type="file" id="files" name="files" webkitdirectory directory multiple>
+        
+        <button type="submit" class="btn-upload">Upload</button>
+    </form>
+
+    <!-- Kết quả -->
+    {% if result is not none %}
+        <h3>Kết quả</h3>
+
+        {% if result|length > 0 %}
+        <a href="{{ url_for('export_excel') }}">
+            <button class="btn-export">Xuất Excel</button>
+        </a>
+        {% endif %}
+
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Ngày</th>
+                <th>Fail</th>
+            </tr>
+            {% for date, count in result.items() %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ date }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% if result|length == 0 %}
+        <p>Không có dữ liệu</p>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    padding: 40px;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Ẩn input thật, dùng label tùy chỉnh */
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 12px 25px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.custom-file-upload:hover {
+    background: #0056b3;
+}
+
+/* Nút Upload */
+.btn-upload {
+    padding: 12px 25px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-upload:hover {
+    background: #218838;
+}
+
+/* Nút Xuất Excel */
+.btn-export {
+    padding: 12px 25px;
+    background: #ffc107;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn-export:hover {
+    background: #e0a800;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #f4f4f4;
+}
+</style>
+
+
+
 from flask import Flask, render_template, request
 from openpyxl import load_workbook
 import csv
