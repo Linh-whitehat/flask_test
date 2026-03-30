@@ -1,3 +1,7 @@
+Mô tả thành quả và kế hoạch của công việc (có thể dựa trên tình hình hoàn thành mục tiêu, kế hoạch sắp tới của công việc, và miêu tả tất cả những gì cần được hỗ trợ cho công việc):
+
+
+
 {% if result|length > 0 %}
     <a href="{{ url_for('export_excel') }}">
         <button style="padding:12px 25px; background:#28a745; color:white; font-weight:bold; margin-bottom:10px; border-radius:5px;">
