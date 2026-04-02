@@ -1,3 +1,27 @@
+<style>
+.btn-learned {
+    display: inline-block;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #00c853, #43a047);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.btn-learned:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #00b248, #388e3c);
+}
+
+.btn-learned:active {
+    transform: scale(0.95);
+}
+</style>
+
 <div style="background:#ddd; height:10px; border-radius:5px;">
     <div style="width: {{ (learned_count/total)*100 }}%; background:#4CAF50; height:10px; border-radius:5px;"></div>
 </div>
