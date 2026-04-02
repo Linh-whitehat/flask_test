@@ -1,6 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Flashcard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin-bottom: 20px;
+        }
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card.flip .inner {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backface-visibility: hidden;
+        }
+
+        .front {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            font-size: 18px;
+        }
+
+        .pinyin {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #00c853;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #00b342;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card" onclick="flipCard()">
+        <div class="inner" id="cardInner">
+
+            <!-- Mặt trước -->
+            <div class="front">
+                {{ word.hanzi }}
+            </div>
+
+            <!-- Mặt sau -->
+            <div class="back">
+                <div>{{ word.meaning }}</div>
+                <div class="pinyin">{{ word.pinyin }}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="btn" onclick="nextCard()">Next</button>
+
+</div>
+
+<script>
+function flipCard() {
+    document.querySelector('.card').classList.toggle('flip');
+}
+
+function nextCard() {
+    window.location.href = "/flashcard";
+}
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
     <title>Quiz</title>
     <style>
         body {
