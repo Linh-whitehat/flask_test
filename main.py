@@ -1,6 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
+            font-weight: bold;
+        }
+
+        .next {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #007bff;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Quiz</h2>
+
+    {% if result is defined %}
+        {% if result %}
+            <p class="correct">✔ Đúng!</p>
+        {% else %}
+            <p class="wrong">✘ Sai!</p>
+            <p>Đáp án: <b>{{ request.form.correct }}</b></p>
+        {% endif %}
+
+        <a href="/quiz" class="next">Câu tiếp →</a>
+
+    {% else %}
+
+        <p class="question">{{ word.meaning }}</p>
+
+        <form method="POST">
+            <input type="text" name="answer" placeholder="Nhập chữ Hán" autofocus>
+            <input type="hidden" name="correct" value="{{ word.hanzi }}">
+            <br>
+            <button type="submit">Kiểm tra</button>
+        </form>
+
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
     <title>Chinese Learning App</title>
     <style>
         body {
