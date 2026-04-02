@@ -1,4 +1,35 @@
 <style>
+.nav-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    font-size: 20px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    line-height: 26px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+</style>
+
+<div style="margin-top:20px; display:flex; justify-content:space-between;">
+
+    <!-- Prev -->
+    <a href="/flashcard?idx={{ idx - 1 }}" class="nav-btn">⬅️</a>
+
+    <!-- Next -->
+    <a href="/flashcard?idx={{ idx + 1 }}" class="nav-btn">➡️</a>
+
+</div>
+<style>
 .btn-learned {
     display: inline-block;
     padding: 10px 18px;
