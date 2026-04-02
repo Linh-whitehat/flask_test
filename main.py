@@ -1,3 +1,7 @@
+
+
+<a href="/learned/{{ idx }}" class="btn">Đã thuộc ✔</a>
+
 from flask import Flask, render_template, request, redirect, url_for, session
 from openpyxl import load_workbook
 import random
