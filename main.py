@@ -1,3 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chinese Learning App</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .info {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        .links {
+            margin-top: 20px;
+        }
+
+        .links a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .links a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>📚 Học tiếng Trung</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <br>
+        <button type="submit">Upload từ vựng</button>
+    </form>
+
+    <p class="info">Đã load: <b>{{ count }}</b> từ</p>
+
+    {% if count > 0 %}
+    <div class="links">
+        <a href="/flashcard">🧠 Học Flashcard</a>
+        <a href="/quiz">✍️ Làm Quiz</a>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+
+
 from flask import Flask, render_template, request, redirect, url_for
 from openpyxl import load_workbook
 import random
