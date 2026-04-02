@@ -1,4 +1,28 @@
+@app.route('/flashcard')
+def flashcard():
+    if not vocab_list:
+        return redirect(url_for('index'))
 
+    learned = session.get('learned', [])
+
+    # 👉 lấy index từ URL (?idx=)
+    idx = request.args.get('idx', 0, type=int)
+
+    # 👉 giới hạn index
+    if idx < 0:
+        idx = 0
+    if idx >= len(vocab_list):
+        idx = len(vocab_list) - 1
+
+    word = vocab_list[idx]
+
+    return render_template(
+        'flashcard.html',
+        word=word,
+        idx=idx,
+        learned_count=len(learned),
+        total=len(vocab_list)
+    )
 {% if idx > 0 %}
 <a href="/flashcard?idx={{ idx - 1 }}" class="nav-btn">⬅️</a>
 {% else %}
