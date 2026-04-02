@@ -1,3 +1,8 @@
+
+<div style="margin-bottom:15px;">
+    <a href="/vocab" class="btn-vocab">📋 Xem danh sách</a>
+</div>
+
 a href="/vocab">📋 Xem danh sách từ</a>
 
 
