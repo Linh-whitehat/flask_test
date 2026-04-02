@@ -1,4 +1,4 @@
-
+<p>{{ learned_count }} / {{ total }} đã học</p>
 
 <a href="/learned/{{ idx }}" class="btn">Đã thuộc ✔</a>
 
