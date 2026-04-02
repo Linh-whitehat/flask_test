@@ -1,3 +1,5 @@
+Not Found
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
 <div style="margin-bottom:15px;">
     <a href="/vocab" class="btn-vocab">📋 Xem danh sách</a>
