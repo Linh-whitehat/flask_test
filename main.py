@@ -1,3 +1,96 @@
+
+@app.route('/vocab')
+def vocab():
+    if not vocab_list:
+        return redirect(url_for('index'))
+
+    learned = session.get('learned', [])
+
+    vocab_with_status = []
+
+    for i, w in enumerate(vocab_list):
+        vocab_with_status.append({
+            "hanzi": w["hanzi"],
+            "pinyin": w["pinyin"],
+            "meaning": w["meaning"],
+            "learned": i in learned
+        })
+
+    return render_template('vocab.html', vocab_list=vocab_with_status)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách từ</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .learned {
+            color: green;
+            font-weight: bold;
+        }
+
+        .not-learned {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📚 Danh sách từ vựng</h2>
+
+<table>
+    <tr>
+        <th>Từ</th>
+        <th>Pinyin</th>
+        <th>Nghĩa</th>
+        <th>Trạng thái</th>
+    </tr>
+
+    {% for w in vocab_list %}
+    <tr>
+        <td>{{ w.hanzi }}</td>
+        <td>/{{ w.pinyin }}/</td>
+        <td>{{ w.meaning }}</td>
+
+        <td>
+            {% if w.learned %}
+                <span class="learned">✅ Đã học</span>
+            {% else %}
+                <span class="not-learned">❌ Chưa học</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
+
+
 @app.route('/flashcard')
 def flashcard():
     if not vocab_list:
