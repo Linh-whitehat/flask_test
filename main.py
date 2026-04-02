@@ -1,3 +1,9 @@
+<div style="background:#ddd; height:10px; border-radius:5px;">
+    <div style="width: {{ (learned_count/total)*100 }}%; background:#4CAF50; height:10px; border-radius:5px;"></div>
+</div>
+<p style="margin-bottom:15px; font-weight:bold;">
+    📊 {{ learned_count }} / {{ total }} đã học
+</p>
 <p>{{ learned_count }} / {{ total }} đã học</p>
 
 <a href="/learned/{{ idx }}" class="btn">Đã thuộc ✔</a>
