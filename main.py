@@ -1,3 +1,5 @@
+a href="/vocab">📋 Xem danh sách từ</a>
+
 
 @app.route('/vocab')
 def vocab():
