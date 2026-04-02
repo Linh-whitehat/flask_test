@@ -3,6 +3,99 @@ from openpyxl import load_workbook
 import random
 
 app = Flask(__name__)
+app.secret_key = "123456"  # 👉 bắt buộc cho session
+
+vocab_list = []
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    global vocab_list
+
+    if request.method == 'POST':
+        file = request.files['file']
+
+        if file:
+            wb = load_workbook(file)
+            ws = wb.active
+
+            vocab_list = []
+
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                if not row:
+                    continue
+
+                vocab_list.append({
+                    "hanzi": row[2],
+                    "pinyin": row[3],
+                    "meaning": row[4]
+                })
+
+            # 👉 reset dữ liệu đã học khi upload file mới
+            session['learned'] = []
+
+    return render_template('index.html', count=len(vocab_list))
+
+
+# 🔥 Flashcard (lọc từ chưa học)
+@app.route('/flashcard')
+def flashcard():
+    if not vocab_list:
+        return redirect(url_for('index'))
+
+    learned = session.get('learned', [])
+
+    # 👉 lọc từ chưa học
+    remaining = [i for i in range(len(vocab_list)) if i not in learned]
+
+    if not remaining:
+        return "🎉 Bạn đã học hết rồi!"
+
+    idx = random.choice(remaining)
+    word = vocab_list[idx]
+
+    return render_template('flashcard.html', word=word, idx=idx)
+
+
+# 🔥 Đánh dấu đã học
+@app.route('/learned/<int:idx>')
+def mark_learned(idx):
+    learned = session.get('learned', [])
+
+    if idx not in learned:
+        learned.append(idx)
+
+    session['learned'] = learned
+
+    return redirect(url_for('flashcard'))
+
+
+# 🔥 Quiz
+@app.route('/quiz', methods=['GET', 'POST'])
+def quiz():
+    if not vocab_list:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+        answer = request.form['answer']
+        correct = request.form['correct']
+
+        result = (answer.strip() == correct.strip())
+
+        return render_template('quiz.html', result=result)
+
+    word = random.choice(vocab_list)
+    return render_template('quiz.html', word=word)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+from flask import Flask, render_template, request, redirect, url_for, session
+from openpyxl import load_workbook
+import random
+
+app = Flask(__name__)
 
 vocab_list = []  # lưu từ vựng
 
