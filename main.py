@@ -1,3 +1,15 @@
+
+{% if idx > 0 %}
+<a href="/flashcard?idx={{ idx - 1 }}" class="nav-btn">⬅️</a>
+{% else %}
+<span class="nav-btn" style="background:#ccc;">⬅️</span>
+{% endif %}
+
+{% if idx < total - 1 %}
+<a href="/flashcard?idx={{ idx + 1 }}" class="nav-btn">➡️</a>
+{% else %}
+<span class="nav-btn" style="background:#ccc;">➡️</span>
+{% endif %}
 <style>
 .nav-btn {
     display: inline-block;
