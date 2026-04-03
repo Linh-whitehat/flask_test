@@ -1,3 +1,22 @@
+
+import os
+import sys
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS  # PyInstaller temp folder
+    except:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+app = Flask(
+    __name__,
+    template_folder=resource_path('templates'),
+    static_folder=resource_path('static')
+)
+
+
 <body>
 
 <a href="/" class="btn-home">⬅️ Trang chủ</a>
