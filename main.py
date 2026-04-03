@@ -1,3 +1,20 @@
+.btn-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    padding: 8px 14px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+}
+
+.btn-home:hover {
+    background: rgba(0,0,0,0.6);
+}
 
 <!DOCTYPE html>
 <html>
