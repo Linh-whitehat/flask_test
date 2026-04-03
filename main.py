@@ -1,4 +1,4 @@
-
+pyinstaller --onefile --noconsole --icon=icon.ico --add-data "templates;templates" main.py
 import os
 import sys
 
