@@ -1,3 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flashcard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin-bottom: 20px;
+        }
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card.flip .inner {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backface-visibility: hidden;
+        }
+
+        .front {
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            font-size: 30px;
+        }
+
+        .pinyin {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #00c853;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #00b342;
+        }
+        .btn-learned {
+            display: inline-block;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #00c853, #43a047);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+           }
+
+        .btn-learned:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #00b248, #388e3c);
+        }
+
+        .btn-learned:active {
+            transform: scale(0.95);
+        }
+        .nav-btn {
+            display: inline-block;
+            font-size: 28px;
+            color: #007bff;
+            text-decoration: none;
+            transition: 0.2s;
+            margin: 0 30px;
+        }
+
+        .nav-btn:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="margin-bottom:15px;">
+    <a href="/vocab" class="btn-vocab">📋 Xem danh sách các từ đã học </a>
+    </div>
+    <p style="margin-bottom:15px; font-weight:bold;">
+        📊 {{ learned_count }} / {{ total }} đã học
+    </p>
+    <div style="background:#ddd; height:10px; border-radius:5px;">
+        <div style="width: {{ (learned_count/total)*100 }}%; background:#4CAF50; height:10px; border-radius:5px;"></div>
+    </div>
+    <br>
+    <div class="card" onclick="flipCard()">
+        <div class="inner" id="cardInner">
+
+            <!-- Mặt trước -->
+            <div class="front">
+                {{ word.hanzi }}
+            </div>
+
+            <!-- Mặt sau -->
+            <div class="back">
+                <div>{{ word.meaning }}</div>
+                <div class="pinyin">/{{ word.pinyin }}/</div>
+            </div>
+
+        </div>
+    </div>
+
+    {% if idx > 0 %}
+    <a href="/flashcard?idx={{ idx - 1 }}" class="nav-btn">⬅️</a>
+    {% else %}
+    <span class="nav-btn" style="background:#ccc;">⬅️</span>
+    {% endif %}
+
+    {% if idx < total - 1 %}
+    <a href="/flashcard?idx={{ idx + 1 }}" class="nav-btn">➡️</a>
+    {% else %}
+    <span class="nav-btn" style="background:#ccc;">➡️</span>
+    {% endif %}
+
+    <br><br>
+    <a href="/learned/{{ idx }}" class="btn-learned">Đã thuộc ✔</a>
+
+</div>
+
+<script>
+function flipCard() {
+    document.querySelector('.card').classList.toggle('flip');
+}
+
+function nextCard() {
+    window.location.href = "/flashcard";
+}
+</script>
+
+</body>
+</html>
+
+
 Not Found
 The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
