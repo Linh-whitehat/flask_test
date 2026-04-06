@@ -1,3 +1,7 @@
+
+TypeError: Translator.__init__() got an unexpected keyword argument 'client'  
+
+
 import asyncio
 import httpx
 from googletrans import Translator
