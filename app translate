@@ -1,3 +1,6 @@
+pip download flask googletrans==4.0.0-rc1 -d D:\offline_libs
+
+
 pip install --no-index --find-links=D:\offline_libs -r requirements.txt
 
 
