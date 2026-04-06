@@ -1,3 +1,15 @@
+(.venv) PS D:\apptranslate> pip install D:\Python\Python313_KU\Flask_Googletrans-0.11-py3-none-any.whl
+Processing d:\python\python313_ku\flask_googletrans-0.11-py3-none-any.whl
+Requirement already satisfied: Flask in d:\apptranslate\.venv\lib\site-packages (from flask-googletrans==0.11) (3.1.2)
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+INFO: pip is looking at multiple versions of flask-googletrans to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement googletrans (from flask-googletrans) (from versions: none)                                                           
+ERROR: No matching distribution found for googletrans                                                 
+
 
 🟢 Flask Backend (app.py)
 
