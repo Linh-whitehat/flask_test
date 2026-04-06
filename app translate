@@ -1,3 +1,109 @@
+(.venv) PS D:\apptranslate> python run test.py
+D:\apptranslate\.venv/Scripts\python.exe: can't open file 'D:\\apptranslate\\run': [Errno 2] No such file or directory
+(.venv) PS D:\apptranslate> python test.py    
+Traceback (most recent call last):
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 216, in handle_async_request                                                              
+    raise exc from None
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 196, in handle_async_request                                                              
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request                                                                    
+    raise exc
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request                                                                    
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_async\connection.py", line 154, in _connect                                                                               
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 68, in start_tls                                                                                 
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Python\Python313\Lib\contextlib.py", line 162, in __exit__                                                                                                               
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions                                                                                
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\apptranslate\test.py", line 8, in <module>                                                                                                                               
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "D:\Python\Python313\Lib\asyncio\runners.py", line 195, in run                                                                                                               
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "D:\Python\Python313\Lib\asyncio\runners.py", line 118, in run                                                                                                               
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete                                                                                            
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "D:\apptranslate\test.py", line 6, in main                                                                                                                                   
+    result = await translator.translate("xin chào", dest="zh-cn")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\googletrans\client.py", line 286, in translate                                                                                      
+    data, response = await self._translate(text, dest, src, kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\googletrans\client.py", line 128, in _translate                                                                                     
+    r = await self.client.get(url, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1768, in get                                                                                                
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request                                                                                            
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send                                                                                               
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth                                                                                
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects                                                                           
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request                                                                               
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request                                                                    
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Python\Python313\Lib\contextlib.py", line 162, in __exit__                                                                                                               
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\apptranslate\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions                                                                 
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+
+
+
+
+
+
+
+
+
 D:\apptranslate\.venv\Scripts\python.exe D:\apptranslate\main.py 
 Hi, PyCharm
 Traceback (most recent call last):
