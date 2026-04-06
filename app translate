@@ -1,3 +1,77 @@
+
+🟢 Flask Backend (app.py)
+
+from flask import Flask, render_template, request, jsonify from googletrans import Translator
+
+app = Flask(name) translator = Translator()
+
+@app.route("/") def index(): return render_template("index.html")
+
+@app.route("/translate", methods=["POST"]) def translate(): data = request.get_json() text = data.get("text") src = data.get("src") dest = data.get("dest")
+
+result = translator.translate(text, src=src, dest=dest)
+return jsonify({"translated": result.text})
+
+if name == "main": app.run(debug=True)
+
+🟢 Frontend (templates/index.html)
+
+<!DOCTYPE html><html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Translator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen"><div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-3xl">
+    <h1 class="text-2xl font-bold mb-4 text-center">🌐 Translator</h1><div class="flex gap-2 mb-4">
+    <select id="src" class="border p-2 rounded w-1/2">
+        <option value="vi">Tiếng Việt</option>
+        <option value="zh-cn">Tiếng Trung</option>
+        <option value="en">English</option>
+    </select>
+
+    <select id="dest" class="border p-2 rounded w-1/2">
+        <option value="zh-cn">Tiếng Trung</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="en">English</option>
+    </select>
+</div>
+
+<div class="grid grid-cols-2 gap-4">
+    <textarea id="inputText" class="border p-3 rounded h-40" placeholder="Nhập văn bản..."></textarea>
+    <textarea id="outputText" class="border p-3 rounded h-40 bg-gray-50" placeholder="Kết quả..." readonly></textarea>
+</div>
+
+<div class="flex justify-between mt-4">
+    <button onclick="translateText()" class="bg-blue-500 text-white px-4 py-2 rounded">Dịch</button>
+    <button onclick="copyText()" class="bg-green-500 text-white px-4 py-2 rounded">Copy</button>
+</div>
+
+</div><script>
+async function translateText() {
+    const text = document.getElementById("inputText").value;
+    const src = document.getElementById("src").value;
+    const dest = document.getElementById("dest").value;
+
+    const res = await fetch("/translate", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ text, src, dest })
+    });
+
+    const data = await res.json();
+    document.getElementById("outputText").value = data.translated;
+}
+
+function copyText() {
+    const output = document.getElementById("outputText");
+    output.select();
+    document.execCommand("copy");
+}
+</script></body>
+</html>
+
+
 (.venv) PS D:\apptranslate> pip install D:\Users\LYNN_PHAN\Downloads\click-8.3.0-py3-none-any.whl
 Processing d:\users\lynn_phan\downloads\click-8.3.0-py3-none-any.whl
 WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
