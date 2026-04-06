@@ -1,3 +1,46 @@
+import asyncio
+import httpx
+from googletrans import Translator
+
+async def main():
+    async with httpx.AsyncClient(http2=False) as client:
+        translator = Translator(client=client)
+        result = await translator.translate("xin chào", dest="zh-cn")
+        print(result.text)
+
+asyncio.run(main())
+
+import asyncio
+import httpx
+from googletrans import Translator
+
+async def main():
+    async with httpx.AsyncClient(http2=False) as client:
+        translator = Translator(
+            client=client,
+            service_urls=['translate.googleapis.com']
+        )
+        result = await translator.translate("xin chào", dest="zh-cn")
+        print(result.text)
+
+asyncio.run(main())
+
+
+import asyncio
+import httpx
+from googletrans import Translator
+
+async def main():
+    async with httpx.AsyncClient(http2=False) as client:
+        translator = Translator(
+            client=client,
+            service_urls=['translate.googleapis.com']
+        )
+        result = await translator.translate("xin chào", dest="zh-cn")
+        print(result.text)
+
+asyncio.run(main())
+
 (.venv) PS D:\apptranslate> python run test.py
 D:\apptranslate\.venv/Scripts\python.exe: can't open file 'D:\\apptranslate\\run': [Errno 2] No such file or directory
 (.venv) PS D:\apptranslate> python test.py    
