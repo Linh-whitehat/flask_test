@@ -1,3 +1,6 @@
+pip install --no-index --find-links=D:\offline_libs -r requirements.txt
+
+
 (.venv) PS D:\apptranslate> pip install D:\Users\LYNN_PHAN\Downloads\colorama-0.4.6-py2.py3-none-any.whl
 Processing d:\users\lynn_phan\downloads\colorama-0.4.6-py2.py3-none-any.whl
 colorama is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
