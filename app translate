@@ -1,3 +1,13 @@
+(.venv) PS D:\apptranslate> pip install flask googletrans==4.0.0-rc1 -i https://pypi.tuna.tsinghua.edu.cn/simplehttps://pypi.tuna.tsinghua.edu.cn/simple
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simplehttps://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: flask in d:\apptranslate\.venv\lib\site-packages (3.1.2)
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<pip._vendor.urllib3.connection.HTTPSConnection object at 0x0000016AF9440440>, 'Connection to pypi.tuna.tsinghua.edu.cn timed out. (connect timeout=15)')': /simplehttps://pypi.tuna.tsinghua.edu.cn/simple/googletrans/        
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<pip._vendor.urllib3.connection.HTTPSConnection object at 0x0000016AF942CCD0>, 'Connection to pypi.tuna.tsinghua.edu.cn timed out. (connect timeout=15)')': /simplehttps://pypi.tuna.tsinghua.edu.cn/simple/googletrans/        
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<pip._vendor.urllib3.connection.HTTPSConnection object at 0x0000016AF942CE10>, 'Connection to pypi.tuna.tsinghua.edu.cn timed out. (connect timeout=15)')': /simplehttps://pypi.tuna.tsinghua.edu.cn/simple/googletrans/        
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<pip._vendor.urllib3.connection.HTTPSConnection object at 0x0000016AF942CF50>, 'Connection to pypi.tuna.tsinghua.edu.cn timed out. (connect timeout=15)')': /simplehttps://pypi.tuna.tsinghua.edu.cn/simple/googletrans/        
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<pip._vendor.urllib3.connection.HTTPSConnection object at 0x0000016AF942D090>, 'Connection to pypi.tuna.tsinghua.edu.cn timed out. (connect timeout=15)')': /simplehttps://pypi.tuna.tsinghua.edu.cn/simple/googletrans/        
+ERROR: Could not find a version that satisfies the requirement googletrans==4.0.0-rc1 (from versions: none)
+ERROR: No matching distribution found for googletrans==4.0.0-rc1
 
 pip install flask googletrans==4.0.0-rc1 -i https://pypi.tuna.tsinghua.edu.cn/simplehttps://pypi.tuna.tsinghua.edu.cn/simple
 
