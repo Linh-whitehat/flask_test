@@ -1,3 +1,13 @@
+D:\apptranslate\.venv\Scripts\python.exe D:\apptranslate\main.py 
+Hi, PyCharm
+Traceback (most recent call last):
+  File "D:\apptranslate\main.py", line 18, in <module>
+    print(result.text)
+          ^^^^^^^^^^^
+AttributeError: 'coroutine' object has no attribute 'text'
+<sys>:0: RuntimeWarning: coroutine 'Translator.translate' was never awaited
+
+
 (.venv) PS D:\apptranslate> pip install D:\Users\LYNN_PHAN\Downloads\googletrans-4.0.2-py3-none-any.whl
 Processing d:\users\lynn_phan\downloads\googletrans-4.0.2-py3-none-any.whl
 Requirement already satisfied: httpx>=0.27.2 in d:\apptranslate\.venv\lib\site-packages (from httpx[http2]>=0.27.2->googletrans==4.0.2) (0.28.1)
