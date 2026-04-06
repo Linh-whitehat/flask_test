@@ -1,0 +1,11 @@
+(.venv) PS D:\apptranslate> pip install D:\Users\LYNN_PHAN\Downloads\click-8.3.0-py3-none-any.whl
+Processing d:\users\lynn_phan\downloads\click-8.3.0-py3-none-any.whl
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/colorama/
+INFO: pip is looking at multiple versions of click to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement colorama; platform_system == "Windows" (from click) (from versions: none)
+ERROR: No matching distribution found for colorama; platform_system == "Windows"
+(.venv) PS D:\apptranslate> 
