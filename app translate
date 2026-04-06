@@ -1,25 +1,25 @@
-(.venv) PS D:\apptranslate> pip install D:\offline_libs\httpx-0.28.1-py3-none-any.whl
-Processing d:\offline_libs\httpx-0.28.1-py3-none-any.whl
-WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/anyio/
- 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/anyio/                                                                              
-WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/anyio/                                                                              
-WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/anyio/                                                                              
-WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/anyio/                                                                              
-INFO: pip is looking at multiple versions of httpx to determine which version is compatible with other requirements. This could take a while.
-ERROR: Could not find a version that satisfies the requirement anyio (from httpx) (from versions: none)                                                                             
-ERROR: No matching distribution found for anyio                                                                                                                                     
-(.venv) PS D:\apptranslate> pip install D:\offline_libs\httpcore-1.0.9-py3-none-any.whl
-Processing d:\offline_libs\httpcore-1.0.9-py3-none-any.whl
-Requirement already satisfied: certifi in d:\apptranslate\.venv\lib\site-packages (from httpcore==1.0.9) (2024.12.14)
-WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/h11/
-WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/h11/
-WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/h11/
-WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/h11/
-WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/h11/
-INFO: pip is looking at multiple versions of httpcore to determine which version is compatible with other requirements. This could take a while.
-ERROR: Could not find a version that satisfies the requirement h11>=0.16 (from httpcore) (from versions: none)
-ERROR: No matching distribution found for h11>=0.16
-
+(.venv) PS D:\apptranslate> pip install D:\Python\Python313_KU\Flask_Googletrans-0.11-py3-none-any.whl
+Processing d:\python\python313_ku\flask_googletrans-0.11-py3-none-any.whl
+Requirement already satisfied: Flask in d:\apptranslate\.venv\lib\site-packages (from flask-googletrans==0.11) (3.1.2)
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/
+ 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/googletrans/                                                                        
+INFO: pip is looking at multiple versions of flask-googletrans to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement googletrans (from flask-googletrans) (from versions: none)                                                           
+ERROR: No matching distribution found for googletrans                                                                                                                               
+(.venv) PS D:\apptranslate> pip install D:\offline_libs\googletranslate-2.1.2-py2.py3-none-any.whl
+Processing d:\offline_libs\googletranslate-2.1.2-py2.py3-none-any.whl
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/requests/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/requests/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/requests/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/requests/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))': /simple/requests/
+INFO: pip is looking at multiple versions of googletranslate to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement requests (from googletranslate) (from versions: none)
+ERROR: No matching distribution found for requests
+(.venv) PS D:\apptranslate> 
 🟢 Flask Backend (app.py)
 
 from flask import Flask, render_template, request, jsonify from googletrans import Translator
