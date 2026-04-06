@@ -1,3 +1,6 @@
+
+https://pypi.tuna.tsinghua.edu.cn/simple
+
 (.venv) PS D:\apptranslate> pip install D:\Users\LYNN_PHAN\Downloads\googletrans-4.0.2-py3-none-any.whl
 Processing d:\users\lynn_phan\downloads\googletrans-4.0.2-py3-none-any.whl
 Requirement already satisfied: httpx>=0.27.2 in d:\apptranslate\.venv\lib\site-packages (from httpx[http2]>=0.27.2->googletrans==4.0.2) (0.28.1)
