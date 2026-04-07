@@ -1,3 +1,31 @@
+
+<style>
+.btn-back {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.2s;
+}
+
+.btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+</style>
+
+<div class="container">
+    
+    <a href="/flashcard" class="btn-back">⬅️ Quay lại Flashcard</a>
+
+    <h2>Danh sách từ</h2>
+
+    <table>
 <td>
             {% if w.learned %}
                 <!--<span class="learned">✅ Đã học</span>-->
