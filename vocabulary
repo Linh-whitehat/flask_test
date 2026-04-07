@@ -1,0 +1,9 @@
+<td>
+            {% if w.learned %}
+                <!--<span class="learned">✅ Đã học</span>-->
+                <a href="/unlearn/{{ loop.index0 }}" class="learned">✅ Đã học</a>
+            {% else %}
+                <!--<span class="not-learned">❌ Chưa học</span>-->
+                <a href="/learned/{{ loop.index0 }}" class="not-learned">❌ Chưa học</a>
+            {% endif %}
+        </td>
