@@ -1,3 +1,20 @@
+<div class="column">
+    {% for h in hanzi %}
+    <div class="item" data-hanzi="{{ h }}" onclick="selectLeft(this)">
+        {{ h }}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="column">
+    {% for m in meanings %}
+    <div class="item" data-meaning="{{ m }}" onclick="selectRight(this)">
+        {{ m }}
+    </div>
+    {% endfor %}
+</div>
+
+
 
 function check() {
     if (selectedLeft && selectedRight) {
