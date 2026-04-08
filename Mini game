@@ -130,3 +130,25 @@ function check() {
 </html>
 
 <a href="/game">🎮 Mini Game</a>
+
+
+@app.route('/game')
+def game():
+    if not vocab_list:
+        return redirect(url_for('index'))
+
+    words = random.sample(vocab_list, min(5, len(vocab_list)))
+
+    pairs = {w["hanzi"]: w["meaning"] for w in words}
+
+    hanzi = list(pairs.keys())
+    meanings = list(pairs.values())
+
+    random.shuffle(meanings)
+
+    return render_template(
+        'game.html',
+        hanzi=hanzi,
+        meanings=meanings,
+        pairs=pairs   # 👈 thêm cái này
+    )
