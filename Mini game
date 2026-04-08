@@ -1,3 +1,50 @@
+
+function check() {
+    if (selectedLeft && selectedRight) {
+
+        let h = selectedLeft.innerText.trim();
+        let m = selectedRight.innerText.trim();
+
+        console.log("Check:", h, m, pairs[h]);
+
+        // 👉 nếu đã đúng rồi thì bỏ qua
+        if (selectedLeft.classList.contains("correct") ||
+            selectedRight.classList.contains("correct")) {
+            return;
+        }
+
+        if (pairs[h] === m) {
+
+            // ✅ đúng → xanh + khóa
+            selectedLeft.classList.add("correct");
+            selectedRight.classList.add("correct");
+
+            selectedLeft.onclick = null;
+            selectedRight.onclick = null;
+
+        } else {
+
+            // ❌ sai → đỏ tạm
+            selectedLeft.classList.add("wrong");
+            selectedRight.classList.add("wrong");
+
+            setTimeout(() => {
+                selectedLeft.classList.remove("wrong");
+                selectedRight.classList.remove("wrong");
+            }, 500);
+        }
+
+        // 👉 reset chọn (KHÔNG xóa correct)
+        setTimeout(() => {
+            selectedLeft.classList.remove("selected");
+            selectedRight.classList.remove("selected");
+            selectedLeft = null;
+            selectedRight = null;
+        }, 200);
+    }
+}
+
+
 Check: 人事 nhân sự nhân sự 
 game:117 Check: 日子 ngày; thời gian; cuộc sống ngày; thời gian; cuộc sống 
 game:117 Check: 软件 phần mềm; ứng dụng phần mềm; ứng dụng 
