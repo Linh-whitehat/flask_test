@@ -1,4 +1,6 @@
-
+Check: 人事 nhân sự nhân sự 
+game:117 Check: 日子 ngày; thời gian; cuộc sống ngày; thời gian; cuộc sống 
+game:117 Check: 软件 phần mềm; ứng dụng phần mềm; ứng dụng 
 
 function check() {
     if (selectedLeft && selectedRight) {
