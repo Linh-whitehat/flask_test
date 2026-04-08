@@ -1,3 +1,45 @@
+
+
+function check() {
+    if (selectedLeft && selectedRight) {
+
+        let h = selectedLeft.innerText.trim();
+        let m = selectedRight.innerText.trim();
+
+        // 👉 nếu 1 trong 2 đã đúng rồi thì bỏ qua
+        if (selectedLeft.classList.contains("correct") || 
+            selectedRight.classList.contains("correct")) {
+            return;
+        }
+
+        if (pairs[h] === m) {
+            selectedLeft.classList.add("correct");
+            selectedRight.classList.add("correct");
+
+            // 👉 khóa luôn (không cho chọn lại)
+            selectedLeft.onclick = null;
+            selectedRight.onclick = null;
+
+        } else {
+            selectedLeft.classList.add("wrong");
+            selectedRight.classList.add("wrong");
+
+            setTimeout(() => {
+                selectedLeft.classList.remove("wrong");
+                selectedRight.classList.remove("wrong");
+            }, 500);
+        }
+
+        // 👉 reset chọn
+        setTimeout(() => {
+            selectedLeft.classList.remove("selected");
+            selectedRight.classList.remove("selected");
+            selectedLeft = null;
+            selectedRight = null;
+        }, 300);
+    }
+}
+
 @app.route('/game')
 def game():
     if not vocab_list:
