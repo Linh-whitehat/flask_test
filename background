@@ -1,3 +1,30 @@
+
+
+.btn-submit {
+    padding: 10px 18px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.btn-next {
+    padding: 10px 18px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+<br><br>
+
+<button onclick="submitGame()" class="btn-submit">📤 Nộp bài</button>
+<button onclick="nextGame()" class="btn-next">➡️ Câu khác</button>
+
+<p id="result"></p>
+
 <!DOCTYPE html>
 <html>
 <head>
