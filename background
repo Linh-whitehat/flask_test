@@ -1,3 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Game</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+        }
+
+        .item {
+            background: white;
+            color: #333;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .item:hover {
+            
+            background: #f1f1f1;
+        }
+
+        .selected {
+            border: 2px solid #ffeb3b;
+            background: yellow;
+        }
+
+        .correct {
+            background: #4CAF50 !important;
+            color: white;
+            pointer-events: none;
+        }
+
+        .wrong {
+            background: #f44336 !important;
+            color: white;
+        }
+
+        .game-box {
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            padding: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #333;
+        }
+        .btn-submit {
+            padding: 10px 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btn-next {
+            padding: 10px 18px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-box">
+    <h2>🎮 Nối từ Trung - Việt</h2>
+
+    <div class="container">
+        <div class="column">
+            {% for h in hanzi %}
+            <div class="item" data-hanzi="{{ h }}" onclick="selectLeft(this)">
+                {{ h }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="column">
+            {% for m in meanings %}
+            <div class="item" data-meaning="{{ m }}" onclick="selectRight(this)">
+                {{ m }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br><br>
+
+<button onclick="submitGame()" class="btn-submit">📤 Nộp bài</button>
+<button onclick="nextGame()" class="btn-next">➡️ Câu khác</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+let selectedLeft = null;
+let selectedRight = null;
+
+const pairs = {{ pairs | tojson }};
+let matched = {};
+
+function selectLeft(el) {
+    if (selectedLeft) selectedLeft.classList.remove("selected");
+    selectedLeft = el;
+    el.classList.add("selected");
+    check();
+}
+
+function selectRight(el) {
+    if (selectedRight) selectedRight.classList.remove("selected");
+    selectedRight = el;
+    el.classList.add("selected");
+    check();
+}
+
+function check() {
+    if (selectedLeft && selectedRight) {
+
+        let h = selectedLeft.dataset.hanzi;
+        let m = selectedRight.dataset.meaning;
+
+        if (pairs[h] === m) {
+
+            selectedLeft.classList.add("correct");
+            selectedRight.classList.add("correct");
+
+            selectedLeft.onclick = null;
+            selectedRight.onclick = null;
+
+            matched[h] = m;
+
+        } else {
+            selectedLeft.classList.add("wrong");
+            selectedRight.classList.add("wrong");
+
+            setTimeout(() => {
+                selectedLeft.classList.remove("wrong");
+                selectedRight.classList.remove("wrong");
+            }, 500);
+        }
+
+        setTimeout(() => {
+            selectedLeft.classList.remove("selected");
+            selectedRight.classList.remove("selected");
+            selectedLeft = null;
+            selectedRight = null;
+        }, 200);
+    }
+}
+
+function submitGame() {
+    if (Object.keys(matched).length < Object.keys(pairs).length) {
+        alert("⚠️ Bạn chưa nối hết!");
+        return;
+    }
+
+    let total = Object.keys(pairs).length;
+    let correct = 0;
+
+    for (let key in pairs) {
+        if (matched[key] === pairs[key]) {
+            correct++;
+        }
+    }
+
+    let result = document.getElementById("result");
+
+    if (correct === total) {
+        result.innerHTML = "🎉 Hoàn hảo! " + correct + "/" + total;
+        result.style.color = "green";
+    } else {
+        result.innerHTML = "😅 Đúng " + correct + "/" + total;
+        result.style.color = "orange";
+    }
+}
+
+function nextGame() {
+    window.location.href = "/game";
+}
+</script>
+
+</body>
+</html>
+
+
 <script>
 let selectedLeft = null;
 let selectedRight = null;
