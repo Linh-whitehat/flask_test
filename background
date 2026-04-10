@@ -1,3 +1,23 @@
+<div style="margin-bottom: 10px;">
+    ⏱️ Thời gian:
+    <select id="timeSelect">
+        <option value="60">Dễ (60s)</option>
+        <option value="40">Trung bình (40s)</option>
+        <option value="20">Khó (20s)</option>
+        <option value="10">Siêu khó (10s)</option>
+    </select>
+
+    <button onclick="startGame()">Bắt đầu</button>
+</div>
+
+<p id="timer">⏳ 0s</p>
+
+
+#timer {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
 body {
     font-family: Arial;
