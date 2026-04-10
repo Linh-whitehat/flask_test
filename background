@@ -1,3 +1,40 @@
+
+.btn-submit, .btn-next {
+    padding: 10px 18px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-submit {
+    background: #4CAF50;
+    margin-right: 10px;
+}
+
+.btn-next {
+    background: #2196F3;
+}
+
+.btn-submit:hover {
+    background: #43a047;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-next:hover {
+    background: #1976d2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-submit:active,
+.btn-next:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
 <script>
 let selectedLeft = null;
 let selectedRight = null;
