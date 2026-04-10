@@ -1,3 +1,156 @@
+
+
+<script>
+let selectedLeft = null;
+let selectedRight = null;
+
+const pairs = {{ pairs | tojson }};
+let answers = {};
+
+let timeLeft = 0;
+let timerInterval = null;
+let gameStarted = false;
+
+/* 🎯 chọn bên trái */
+function selectLeft(el) {
+    if (!gameStarted) {
+        alert("👉 Bấm 'Bắt đầu' trước!");
+        return;
+    }
+
+    if (selectedLeft) selectedLeft.classList.remove("selected");
+    selectedLeft = el;
+    el.classList.add("selected");
+    check();
+}
+
+/* 🎯 chọn bên phải */
+function selectRight(el) {
+    if (!gameStarted) {
+        alert("👉 Bấm 'Bắt đầu' trước!");
+        return;
+    }
+
+    if (selectedRight) selectedRight.classList.remove("selected");
+    selectedRight = el;
+    el.classList.add("selected");
+    check();
+}
+
+/* 🎯 kiểm tra */
+function check() {
+    if (selectedLeft && selectedRight) {
+
+        let h = selectedLeft.dataset.hanzi;
+        let m = selectedRight.dataset.meaning;
+
+        // 👉 lưu mọi lựa chọn
+        answers[h] = m;
+
+        if (pairs[h] === m) {
+
+            selectedLeft.classList.add("correct");
+            selectedRight.classList.add("correct");
+
+            selectedLeft.onclick = null;
+            selectedRight.onclick = null;
+
+        } else {
+            selectedLeft.classList.add("wrong");
+            selectedRight.classList.add("wrong");
+
+            setTimeout(() => {
+                selectedLeft.classList.remove("wrong");
+                selectedRight.classList.remove("wrong");
+            }, 400);
+        }
+
+        setTimeout(() => {
+            selectedLeft.classList.remove("selected");
+            selectedRight.classList.remove("selected");
+            selectedLeft = null;
+            selectedRight = null;
+        }, 150);
+    }
+}
+
+/* 🚀 BẮT ĐẦU GAME */
+function startGame() {
+    let select = document.getElementById("timeSelect");
+    timeLeft = parseInt(select.value);
+
+    gameStarted = true;
+    answers = {}; // reset
+
+    document.getElementById("timer").innerHTML = "⏳ " + timeLeft + "s";
+    document.getElementById("timer").style.color = "white";
+
+    // clear timer cũ
+    if (timerInterval) clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+
+        document.getElementById("timer").innerHTML = "⏳ " + timeLeft + "s";
+
+        // gần hết giờ -> đỏ
+        if (timeLeft <= 5) {
+            document.getElementById("timer").style.color = "red";
+        }
+
+        // hết giờ
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            autoSubmit();
+        }
+
+    }, 1000);
+}
+
+/* ⏰ tự nộp */
+function autoSubmit() {
+    alert("⏰ Hết giờ!");
+    submitGame();
+}
+
+/* 📤 nộp bài */
+function submitGame() {
+    let total = Object.keys(pairs).length;
+
+    if (Object.keys(answers).length < total) {
+        alert("⚠️ Bạn chưa nối hết!");
+        return;
+    }
+
+    let correct = 0;
+
+    for (let key in pairs) {
+        if (answers[key] === pairs[key]) {
+            correct++;
+        }
+    }
+
+    let result = document.getElementById("result");
+
+    if (correct === total) {
+        result.innerHTML = "🎉 Hoàn hảo! " + correct + "/" + total;
+        result.style.color = "lime";
+    } else {
+        result.innerHTML = "😅 Đúng " + correct + "/" + total;
+        result.style.color = "yellow";
+    }
+}
+
+/* ➡️ câu khác */
+function nextGame() {
+    if (timerInterval) clearInterval(timerInterval);
+    window.location.href = "/game";
+}
+</script>
+
+
+
+
 <button onclick="startGame()" class="btn-start">🚀 Bắt đầu</button>
 
 /* 🔥 box chọn thời gian */
