@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Game</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+        }
+
+        .item {
+            background: white;
+            color: #333;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0,2s;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            background: #f1f1f1;
+        }
+
+        .selected {
+            border: 2px solid #ffeb3b;
+            background: yellow;
+        }
+
+        .correct {
+            background: #4CAF50 !important;
+            color: white;
+            pointer-events: none;
+        }
+
+        .wrong {
+            background: #f44336 !important;
+            color: white;
+        }
+
+        .game-box {
+            background: #eceff1);
+            padding: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-box">
+    <h2>🎮 Nối từ Trung - Việt</h2>
+
+    <div class="container">
+        <div class="column">
+            {% for h in hanzi %}
+            <div class="item" data-hanzi="{{ h }}" onclick="selectLeft(this)">
+                {{ h }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="column">
+            {% for m in meanings %}
+            <div class="item" data-meaning="{{ m }}" onclick="selectRight(this)">
+                {{ m }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<script>
+let selectedLeft = null;
+let selectedRight = null;
+
+const pairs = {{ pairs | tojson }}
+
+function selectLeft(el) {
+    if (selectedLeft) selectedLeft.classList.remove("selected");
+    selectedLeft = el;
+    el.classList.add("selected");
+    check();
+}
+
+function selectRight(el) {
+    if (selectedRight) selectedRight.classList.remove("selected");
+    selectedRight = el;
+    el.classList.add("selected");
+    check();
+}
+
+function check() {
+    if (selectedLeft && selectedRight) {
+
+        let h = selectedLeft.dataset.hanzi;
+        let m = selectedRight.dataset.meaning;
+
+        console.log("Check:", h, m, pairs[h]);
+
+        // 👉 nếu đã đúng rồi thì bỏ qua
+        if (selectedLeft.classList.contains("correct") ||
+            selectedRight.classList.contains("correct")) {
+            return;
+        }
+
+        if (pairs[h] === m) {
+
+            // ✅ đúng → xanh + khóa
+            selectedLeft.classList.add("correct");
+            selectedRight.classList.add("correct");
+
+            selectedLeft.onclick = null;
+            selectedRight.onclick = null;
+
+        } else {
+
+            // ❌ sai → đỏ tạm
+            selectedLeft.classList.add("wrong");
+            selectedRight.classList.add("wrong");
+
+            setTimeout(() => {
+                selectedLeft.classList.remove("wrong");
+                selectedRight.classList.remove("wrong");
+            }, 500);
+        }
+
+        // 👉 reset chọn (KHÔNG xóa correct)
+        setTimeout(() => {
+            selectedLeft.classList.remove("selected");
+            selectedRight.classList.remove("selected");
+            selectedLeft = null;
+            selectedRight = null;
+        }, 200);
+    }
+}
+</script>
+
+</body>
+</html>
