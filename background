@@ -1,3 +1,14 @@
+<ul style="list-style: none; padding: 0;">
+{% for f in files %}
+    <li style="margin: 8px 0;">
+        <a href="/load/{{ f }}" style="text-decoration:none; color:#2196F3;">
+            📄 {{ f }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+
 <h3>📁 File đã lưu</h3>
 
 <ul>
