@@ -1,3 +1,6 @@
+Not Found
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again
+
 @app.route('/delete/<filename>')
 def delete_file(filename):
     path = os.path.join(UPLOAD_FOLDER, filename)
