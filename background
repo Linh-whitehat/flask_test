@@ -1,3 +1,32 @@
+@app.route('/delete/<filename>')
+def delete_file(filename):
+    path = os.path.join(UPLOAD_FOLDER, filename)
+
+    if os.path.exists(path):
+        os.remove(path)
+
+    return redirect(url_for('index'))
+
+<ul>
+{% for f in files %}
+    <li>
+        📄 {{ f }}
+
+        {% if f == current_file %}
+            <span style="color:green;">✔ Đang dùng</span>
+        {% endif %}
+
+        <a href="/load/{{ f }}">Dùng lại</a>
+
+        <!-- 👉 nút xóa -->
+        <a href="/delete/{{ f }}" 
+           style="color:red; margin-left:10px;"
+           onclick="return confirm('Xóa file này?')">
+           🗑️
+        </a>
+    </li>
+{% endfor %}
+</ul>
 
 {% if f == current_file %}
             <span style="color:green; font-weight:bold;">✔ Đang dùng</span>
