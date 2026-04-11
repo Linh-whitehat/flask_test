@@ -1,3 +1,27 @@
+
+@app.route('/load/<filename>')
+def load_file(filename):
+    global vocab_list, current_file_path
+
+    path = os.path.join("saved_files", filename)
+    current_file_path = path
+
+    from openpyxl import load_workbook
+    wb = load_workbook(path)
+    ws = wb.active
+
+    vocab_list = []
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        if not row:
+            continue
+        vocab_list.append({
+            "hanzi": row[2],
+            "pinyin": row[3],
+            "meaning": row[4]
+        })
+
+    return redirect(url_for('flashcard'))
+
 <button onclick="toggleFiles()" class="btn-toggle">
     📁 File đã lưu
 </button>
