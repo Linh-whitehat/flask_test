@@ -1,3 +1,17 @@
+
+<script>
+function confirmSave() {
+    let save = confirm("💾 Bạn có muốn lưu file cũ không?");
+    document.getElementById("saveOld").value = save ? "yes" : "no";
+    return true;
+}
+</script>
+<form method="POST" enctype="multipart/form-data" onsubmit="return confirmSave()">
+    <input type="file" name="file" required>
+    <input type="hidden" name="save_old" id="saveOld">
+    <button type="submit">Upload</button>
+</form>
+
 def load_progress():
     try:
         with open("progress.json", "r", encoding="utf-8") as f:
