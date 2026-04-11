@@ -1,3 +1,8 @@
+
+{% if f == current_file %}
+            <span style="color:green; font-weight:bold;">✔ Đang dùng</span>
+        {% endif %}
+
 UnboundLocalError
 UnboundLocalError: cannot access local variable 'files' where it is not associated with a value
 
