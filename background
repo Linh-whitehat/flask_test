@@ -1,3 +1,14 @@
+<h3>📁 File đã lưu</h3>
+
+<ul>
+{% for f in files %}
+    <li>
+        <a href="/load/{{ f }}">{{ f }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+
 ValueError
 ValueError: too many values to unpack (expected 2)
 
